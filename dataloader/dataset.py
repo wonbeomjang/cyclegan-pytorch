@@ -4,7 +4,7 @@ import os
 import glob
 from torchvision import transforms
 
-class GANDataset(Dataset):
+class GanDataset(Dataset):
     def __init__(self, data_folder, from_style, to_style, image_size=224):
         self.data_folder = data_folder
         self.image_size = image_size
@@ -39,4 +39,4 @@ class GANDataset(Dataset):
             image_A = transform_A(image_A)
             image_B = transform_B(image_B)
 
-        return {'A':image_A, 'B':image_B}   
+        return {'A':image_A, 'B':image_B}
