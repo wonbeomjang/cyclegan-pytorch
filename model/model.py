@@ -78,9 +78,15 @@ class Discriminator(nn.Module):
         self.model += [nn.Conv2d(in_channels=in_channels, out_channels=1, kernel_size=4),
                        nn.Sigmoid()]
 
+        self.model = nn.Sequential(*self.model)
+
     def discriminator_block(self, in_channels, out_channels, nomalization=True):
-        block = [nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=4, stride=2),
-                 nn.InstanceNorm2d(out_channels),
-                 nn.LeakyReLU(inplace=True)]
+        block = [nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=4, stride=2)]
+        if nomalization:
+            block += nn.InstanceNorm2d(out_channels)
+        block += nn.LeakyReLU(inplace=True)
 
         return block
+
+    def forward(self, input):
+        return nn.Sequential(self.model)
