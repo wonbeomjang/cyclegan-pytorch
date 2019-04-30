@@ -11,25 +11,26 @@ def build_model(config, from_style, to_style):
     discriminator_a = Discriminator(config.image_size).to(device)
     discriminator_b = Discriminator(config.image_size).to(device)
 
-    generator_ab_param = glob(os.path.join(config.checkporint_dir, f"{from_style}_{to_style}", "GeneratorAB*.pth"))
-    generator_ba_param = glob(os.path.join(config.checkporint_dir, f"{from_style}_{to_style}", "GeneratorBA*.pth"))
-    discriminator_a_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}_{to_style}", "DiscriminatorA*.pth"))
-    discriminator_b_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}_{to_style}", "DiscriminatorB*.pth"))
+    generator_ab_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "GeneratorAB*.pth"))
+    generator_ba_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "GeneratorBA*.pth"))
+    discriminator_a_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "DiscriminatorA*.pth"))
+    discriminator_b_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "DiscriminatorB*.pth"))
 
-    print(f"[*] Load checkpoint in {config.checkporint_dir}")
-    if not os.path.exists(config.checkpoint_dir):
+    print(f"[*] Load checkpoint in {config.checkpoint_dir}")
+    if not os.path.exists(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}")):
+        os.makedirs(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}"))
+
+    if len(os.listdir(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}"))) == 0:
         print(f"[!] No checkpoint in {config.checkpoint_dir}")
-        os.makedirs(config.checkpoint_dir)
         generator_ab.apply(weights_init)
         generator_ba.apply(weights_init)
         discriminator_a.apply(weights_init)
         discriminator_b.apply(weights_init)
-
     else:
-        generator_ab.load_state_dict(torch.load(generator_ab_param, map_location=device))
-        generator_ba.load_state_dict(torch.load(generator_ba_param, map_location=device))
-        discriminator_a.load_state_dict(torch.load(discriminator_a_param, map_location=device))
-        discriminator_b.load_state_dict(torch.load(discriminator_b_param, map_location=device))
+        generator_ab.load_state_dict(torch.load(generator_ab_param[-1], map_location=device))
+        generator_ba.load_state_dict(torch.load(generator_ba_param[-1], map_location=device))
+        discriminator_a.load_state_dict(torch.load(discriminator_a_param[-1], map_location=device))
+        discriminator_b.load_state_dict(torch.load(discriminator_b_param[-1], map_location=device))
 
     return generator_ab, generator_ba, discriminator_a, discriminator_b
 

@@ -18,9 +18,7 @@ class Trainer:
         self.checkpoint_dir = config.checkpoint_dir
         self.from_style = config.from_style
         self.to_style = config.to_style
-        self.generator_ab, self.generator_ba, self.discriminator_a, self.discriminator_b\
-            = build_model(config, self.from_style, self.to_style)
-
+        self.generator_ab, self.generator_ba, self.discriminator_a, self.discriminator_b = build_model(config, self.from_style, self.to_style)
         self.optimizer_G = torch.optim.Adam(
             itertools.chain(self.generator_ab.parameters(), self.generator_ba.parameters()),
             lr=config.lr, betas=(config.decay_epoch_1, config.decay_epoch_2))
@@ -41,6 +39,9 @@ class Trainer:
         self.criterion_identity = nn.L1Loss().to(self.device)
 
     def train(self):
+        if not os.path.exists(os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}")):
+            os.makedirs(os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}"))
+
         for epoch in range(self.num_epoch):
             for step, image in enumerate(self.data_loader):
                 total_step = len(self.data_loader)
@@ -121,15 +122,15 @@ class Trainer:
             self.lr_scheduler_G.step()
 
             torch.save(self.generator_ab.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                    f"{self.from_style}_{self.to_style}",
+                                                                    f"{self.from_style}2{self.to_style}",
                                                                     f"generator_ab_{epoch}.pth"))
             torch.save(self.generator_ba.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                    f"{self.from_style}_{self.to_style}",
+                                                                    f"{self.from_style}2{self.to_style}",
                                                                     f"generator_ba_{epoch}.pth"))
 
             torch.save(self.discriminator_a.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                       f"{self.from_style}_{self.to_style}",
+                                                                       f"{self.from_style}2{self.to_style}",
                                                                        f"discriminator_{epoch}.pth"))
             torch.save(self.discriminator_a.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                       f"{self.from_style}_{self.to_style}",
+                                                                       f"{self.from_style}2{self.to_style}",
                                                                        f"discriminator_{epoch}.pth"))
