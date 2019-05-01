@@ -6,7 +6,6 @@ import torch.nn as nn
 from model import build_model
 import torch.optim.lr_scheduler
 import os
-import matplotlib.pyplot as plt
 
 class Trainer:
     def __init__(self, config, data_loader):
