@@ -9,7 +9,7 @@ parser.add_argument('--decay_epoch_1', type=float, default=0.5, help='adam: lear
 parser.add_argument('--decay_epoch_2', type=float, default=0.999, help='adam: learning rate decay start epoch num')
 parser.add_argument('--decay_epoch', type=int, default=50, help='learning rate decay start epoch num')
 parser.add_argument('--num_epoch', type=int, default=100, help='learning rate decay start epoch num')
-parser.add_argument("--epoch", type=int, default=35, help="epoch to start training from")
+parser.add_argument("--epoch", type=int, default=0, help="epoch to start training from")
 parser.add_argument('--lr', type=float, default=0.0002, help='learning rate')
 parser.add_argument('--checkpoint_dir', default='checkpoints', help="path to saved models (to continue training)")
 parser.add_argument('--sample_dir', default='samples', help='folder to output images and model checkpoints')

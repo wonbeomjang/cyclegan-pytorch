@@ -20,7 +20,7 @@ class Tester:
         if not os.path.exists(style_dir):
             os.makedirs(style_dir)
 
-        for epoch in range(50, self.num_epoch):
+        for epoch in range(0, self.num_epoch):
             generator_ab, generator_ba = get_sample_model(self.config, self.from_style, self.to_style, epoch)
             if not os.path.exists(os.path.join(style_dir, str(epoch))):
                 os.makedirs(os.path.join(style_dir, str(epoch)))
@@ -32,12 +32,12 @@ class Tester:
                 fake_image_b = generator_ab(real_image_a)
                 fake_image_a = generator_ba(real_image_b)
 
-                # image_grid = torch.cat((real_image_a, fake_image_a, real_image_b, fake_image_b), 1)
-                save_image(fake_image_b, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.from_style}2{self.to_style}_fake.png", normalize=False)
-                save_image(real_image_a, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.from_style}_real.png", normalize=False)
-                save_image(fake_image_a, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.to_style}2{self.from_style}_fake.png", normalize=False)
-                save_image(real_image_b, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.to_style}_real.png", normalize=False)
-                print(f"[epoch: {epoch}][{step}/{self.total_step}]save image")
+                to_style_image = torch.cat([real_image_a, fake_image_b], 0)
+                from_style_image = torch.cat([real_image_b, fake_image_a], 0)
+
+                save_image(to_style_image, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.from_style}2{self.to_style}.png", normalize=False)
+                save_image(from_style_image, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.to_style}2{self.from_style}.png", normalize=False)
+                print(f"[epoch: {epoch}][{10}/{self.total_step}]save image")
                 if step % 10 == 9:
                     break
 
