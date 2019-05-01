@@ -11,10 +11,10 @@ def build_model(config, from_style, to_style):
     discriminator_a = Discriminator(config.image_size).to(device)
     discriminator_b = Discriminator(config.image_size).to(device)
 
-    generator_ab_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "GeneratorAB*.pth"))
-    generator_ba_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "GeneratorBA*.pth"))
-    discriminator_a_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "DiscriminatorA*.pth"))
-    discriminator_b_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", "DiscriminatorB*.pth"))
+    generator_ab_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", f"generator_ab_{config.epoch-1}.pth"))
+    generator_ba_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", f"generator_ba_{config.epoch-1}.pth"))
+    discriminator_a_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", f"discriminator_a_{config.epoch-1}.pth"))
+    discriminator_b_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", f"discriminator_b_{config.epoch-1}.pth"))
 
     print(f"[*] Load checkpoint in {config.checkpoint_dir}")
     if not os.path.exists(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}")):
@@ -34,6 +34,18 @@ def build_model(config, from_style, to_style):
 
     return generator_ab, generator_ba, discriminator_a, discriminator_b
 
+
+def get_sample_model(config, from_style, to_style):
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    generator_ab = ResidualGenerator(config.image_size, config.num_residual_blocks).to(device)
+    generator_ab_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", f"generator_ab_{config.epoch-1}.pth"))
+    print(f"[*] Load checkpoint in {config.checkpoint_dir}")
+    if len(os.listdir(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}"))) == 0:
+        raise Exception(f"[!] No checkpoint in {config.checkpoint_dir}")
+    else:
+        generator_ab.load_state_dict(torch.load(generator_ab_param[-1], map_location=device))
+
+    return generator_ab
 
 def weights_init(m):
     classname = m.__class__.__name__

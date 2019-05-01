@@ -6,6 +6,7 @@ import torch.nn as nn
 from model import build_model
 import torch.optim.lr_scheduler
 import os
+import matplotlib.pyplot as plt
 
 class Trainer:
     def __init__(self, config, data_loader):
@@ -18,6 +19,8 @@ class Trainer:
         self.checkpoint_dir = config.checkpoint_dir
         self.from_style = config.from_style
         self.to_style = config.to_style
+        self.sample_dir = config.sample_dir
+        self.epoch = config.epoch
         self.generator_ab, self.generator_ba, self.discriminator_a, self.discriminator_b = build_model(config, self.from_style, self.to_style)
         self.optimizer_G = torch.optim.Adam(
             itertools.chain(self.generator_ab.parameters(), self.generator_ba.parameters()),
@@ -42,7 +45,7 @@ class Trainer:
         if not os.path.exists(os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}")):
             os.makedirs(os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}"))
 
-        for epoch in range(self.num_epoch):
+        for epoch in range(self.epoch, self.num_epoch):
             for step, image in enumerate(self.data_loader):
                 total_step = len(self.data_loader)
 
@@ -130,7 +133,19 @@ class Trainer:
 
             torch.save(self.discriminator_a.state_dict(), os.path.join(self.checkpoint_dir,
                                                                        f"{self.from_style}2{self.to_style}",
-                                                                       f"discriminator_{epoch}.pth"))
-            torch.save(self.discriminator_a.state_dict(), os.path.join(self.checkpoint_dir,
+                                                                       f"discriminator_a_{epoch}.pth"))
+            torch.save(self.discriminator_b.state_dict(), os.path.join(self.checkpoint_dir,
                                                                        f"{self.from_style}2{self.to_style}",
-                                                                       f"discriminator_{epoch}.pth"))
+                                                                       f"discriminator_b_{epoch}.pth"))
+"""
+            fig = plt.figure()
+            subplot = fig.add_subplot(epoch + 1, 3, epoch + 1)
+            fake_image_b = self.generator_ab(real_image_a)
+            fake_image_a = self.generator_ba(real_image_b)
+            subplot.imshow([fake_image_b[0].cpu().numpy(), fake_image_a[0].cpu().numpy()])
+            subplot.set_xticks([])
+            subplot.set_yticks([])
+            print('[*] Saved sample images')
+            dir_name = os.path.join(self.sample_dir, "test.png")
+            plt.savefig(dir_name)
+"""
