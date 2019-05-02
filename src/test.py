@@ -20,7 +20,7 @@ class Tester:
         if not os.path.exists(style_dir):
             os.makedirs(style_dir)
 
-        for epoch in range(0, self.num_epoch):
+        for epoch in range(90, self.num_epoch):
             generator_ab, generator_ba = get_sample_model(self.config, self.from_style, self.to_style, epoch)
             if not os.path.exists(os.path.join(style_dir, str(epoch))):
                 os.makedirs(os.path.join(style_dir, str(epoch)))
