@@ -18,8 +18,8 @@ def main(config):
     print(f"{config.from_style} to {config.to_style} CycleGAN")
 
     data_loader, val_data_loader = get_loader(config.from_style, config.to_style, config)
-    # trainer = Trainer(config, data_loader)
-    # trainer.train()
+    trainer = Trainer(config, data_loader)
+    trainer.train()
 
     tester = Tester(config, val_data_loader)
     tester.test()

@@ -6,6 +6,8 @@ import torch.nn as nn
 from model import build_model
 import torch.optim.lr_scheduler
 import os
+from torchvision.utils import save_image
+
 
 class Trainer:
     def __init__(self, config, data_loader):
@@ -36,23 +38,29 @@ class Trainer:
         self.lr_scheduler_D_B = torch.optim.lr_scheduler.LambdaLR(self.optimizer_G,
                                                                   lr_lambda=LambdaLR(self.num_epoch, config.epoch, config.decay_epoch).step)
 
-        self.criterion_gan = nn.BCELoss().to(self.device)
+        # self.criterion_gan = nn.BCELoss().to(self.device)
+        self.criterion_gan = nn.MSELoss().to(self.device)
         self.criterion_cycle = nn.L1Loss().to(self.device)
         self.criterion_identity = nn.L1Loss().to(self.device)
 
     def train(self):
         if not os.path.exists(os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}")):
             os.makedirs(os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}"))
+        style_dir = os.path.join(self.sample_dir, f"{self.from_style}2{self.to_style}")
+        if not os.path.exists(style_dir):
+            os.makedirs(style_dir)
 
         for epoch in range(self.epoch, self.num_epoch):
+            if not os.path.exists(os.path.join(style_dir, str(epoch))):
+                os.makedirs(os.path.join(style_dir, str(epoch)))
             for step, image in enumerate(self.data_loader):
                 total_step = len(self.data_loader)
 
                 real_image_a = image["A"].to(self.device)
                 real_image_b = image["B"].to(self.device)
 
-                real_labels = torch.ones(self.batch_size, 1).to(self.device)
-                fake_labels = torch.zeros(self.batch_size, 1).to(self.device)
+                real_labels = torch.ones((real_image_a.size(0), *self.discriminator_a.output_shape)).to(self.device)
+                fake_labels = torch.zeros((real_image_a.size(0), *self.discriminator_a.output_shape)).to(self.device)
 
                 # ---------------
                 # train generator
@@ -118,6 +126,14 @@ class Trainer:
                     print(f"[Epoch {epoch}/{self.num_epoch}] [Batch {step}/{total_step}] "
                           f"[D loss: {discriminator_loss.item()}] [G loss: {generator_loss.item()}, "
                           f"adv: {gan_loss.item()}, cycle: {cycle_loss.item()}, identity: {identity_loss.item()}]")
+                    to_style_image = torch.cat([real_image_a, fake_image_b], 2)
+                    from_style_image = torch.cat([real_image_b, fake_image_a], 2)
+                    save_image(to_style_image,
+                               f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.from_style}2{self.to_style}.png",
+                               normalize=False)
+                    save_image(from_style_image,
+                               f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.to_style}2{self.from_style}.png",
+                               normalize=False)
 
             self.lr_scheduler_D_A.step()
             self.lr_scheduler_D_B.step()

@@ -44,4 +44,4 @@ class GanDataset(Dataset):
         return {'A': image_a, 'B': image_b}
 
     def __len__(self):
-        return min(len(self.files_a), len(self.files_b))
+        return min(len(self.files_a), len(self.files_b))-1

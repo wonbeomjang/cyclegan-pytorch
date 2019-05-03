@@ -80,6 +80,8 @@ class Discriminator(nn.Module):
         super(Discriminator, self).__init__()
         channels = 3
 
+        self.output_shape = (1, in_shape // 2 ** 4, in_shape // 2 ** 4)
+
         def discriminator_block(in_filters, out_filters, normalize=True):
             """Returns downsampling layers of each discriminator block"""
             layers = [nn.Conv2d(in_filters, out_filters, 4, stride=2, padding=1)]
@@ -104,6 +106,6 @@ class Discriminator(nn.Module):
 
     def forward(self, img):
         x = self.model(img)
-        x = x.view(x.size(0), -1)
-        x = self.classification(x)
+        # x = x.view(x.size(0), -1)
+        # x = self.classification(x)
         return x
