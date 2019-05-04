@@ -15,7 +15,7 @@ parser.add_argument('--checkpoint_dir', default='checkpoints', help="path to sav
 parser.add_argument('--sample_dir', default='samples', help='folder to output images and model checkpoints')
 parser.add_argument('--workers', type=int, default=4, help='number of data loading workers')
 parser.add_argument('--num_residual_blocks', type=int, default=4, help='number of data loading workers')
-parser.add_argument('--lambda_cycle', type=float, default=10.0, help='number of data loading workers')
+parser.add_argument('--lambda_cycle', type=float, default=5.0, help='number of data loading workers')
 parser.add_argument('--lambda_identity', type=float, default=5.0, help='number of data loading workers')
 parser.add_argument('--from_style', default="photo", help='')
 parser.add_argument('--to_style', default="monet", help='')
