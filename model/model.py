@@ -99,13 +99,6 @@ class Discriminator(nn.Module):
             nn.Conv2d(512, 1, 4, padding=1)
         )
 
-        self.classification = nn.Sequential(
-            nn.Linear(14*14, 1),
-            nn.Sigmoid()
-        )
-
     def forward(self, img):
         x = self.model(img)
-        # x = x.view(x.size(0), -1)
-        # x = self.classification(x)
         return x

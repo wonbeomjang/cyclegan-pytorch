@@ -28,13 +28,11 @@ class GanDataset(Dataset):
                 transforms.CenterCrop(min(image_a.size[0], image_a.size[1])),
                 transforms.Resize(self.image_size),
                 transforms.ToTensor(),
-                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
             ])
             transform_b = transforms.Compose([
                 transforms.CenterCrop(min(image_b.size[0], image_b.size[1])),
                 transforms.Resize(self.image_size),
                 transforms.ToTensor(),
-                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
             ])
 
             image_a = transform_a(image_a)

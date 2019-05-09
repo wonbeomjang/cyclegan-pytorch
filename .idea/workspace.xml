@@ -4,7 +4,10 @@
     <list default="true" id="02066752-5668-4386-b789-a2268bfec8be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader/dataloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,13 +18,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.py">
+        <entry file="file://$PROJECT_DIR$/config/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="20" column="30" selection-start-line="18" selection-start-column="8" selection-end-line="20" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="437">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -29,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            <state relative-caret-position="304">
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -39,31 +39,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2356">
-              <caret line="132" column="84" selection-start-line="132" selection-start-column="84" selection-end-line="132" selection-end-column="84" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="92" lean-forward="true" selection-start-line="15" selection-start-column="92" selection-end-line="15" selection-end-column="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataloader/dataloader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+            <state relative-caret-position="152">
+              <caret line="9" column="68" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="68" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -72,34 +51,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataloader/dataset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2071">
-              <caret line="109" column="33" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+            <state relative-caret-position="247">
+              <caret line="16" column="128" selection-start-line="16" selection-start-column="128" selection-end-line="16" selection-end-column="128" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -150,29 +117,28 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/webcam.py" />
-        <option value="$PROJECT_DIR$/dataloader/dataloader.py" />
-        <option value="$PROJECT_DIR$/model/__init__.py" />
-        <option value="$PROJECT_DIR$/dataloader/dataset.py" />
-        <option value="$PROJECT_DIR$/src/test.py" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/model/model.py" />
         <option value="$PROJECT_DIR$/src/train.py" />
+        <option value="$PROJECT_DIR$/dataloader/dataloader.py" />
+        <option value="$PROJECT_DIR$/src/test.py" />
+        <option value="$PROJECT_DIR$/dataloader/dataset.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/model/__init__.py" />
         <option value="$PROJECT_DIR$/config/config.py" />
+        <option value="$PROJECT_DIR$/model/model.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="374" />
-    <option name="y" value="-9" />
-    <option name="width" value="1040" />
-    <option name="height" value="744" />
+    <option name="x" value="-18" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,22 +149,13 @@
             <path>
               <item name="cyclegan-pytorch" type="b2602c69:ProjectViewProjectNode" />
               <item name="cyclegan-pytorch" type="462c0819:PsiDirectoryNode" />
-              <item name="checkpoints" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cyclegan-pytorch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cyclegan-pytorch" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cyclegan-pytorch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cyclegan-pytorch" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -397,13 +354,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13435195" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14225501" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966952" weight="0.38611713" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966952" weight="0.2548807" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -444,35 +402,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="edit discriminator" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="89" column="11" selection-start-line="89" selection-start-column="11" selection-end-line="89" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/pytorch/Lib/site-packages/torch/utils/data/dataloader.py" />
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/organize_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/photo/000000.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/photo/000002.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webcam.py" />
-    <entry file="file://$PROJECT_DIR$/sample/2.png" />
-    <entry file="file://$PROJECT_DIR$/sample/3.png" />
-    <entry file="file://$PROJECT_DIR$/sample/4.png" />
     <entry file="file://$PROJECT_DIR$/sample/0.png" />
     <entry file="file://$PROJECT_DIR$/sample/8_real.png" />
     <entry file="file://$PROJECT_DIR$/sample/7_real.png" />
@@ -512,29 +441,9 @@
     <entry file="file://$PROJECT_DIR$/samples/photo2monet/59/230_photo2monet.png" />
     <entry file="file://$PROJECT_DIR$/samples/photo2monet/59/220_monet2photo.png" />
     <entry file="file://$PROJECT_DIR$/samples/photo2monet/59/200_photo2monet.png" />
-    <entry file="file://$PROJECT_DIR$/src/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="30" selection-start-line="18" selection-start-column="8" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2356">
+        <state relative-caret-position="213">
           <caret line="132" column="84" selection-start-line="132" selection-start-column="84" selection-end-line="132" selection-end-column="84" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
@@ -542,47 +451,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataloader/dataloader.py">
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/1/100_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/1/150_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/1/50_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/src/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        <state relative-caret-position="551">
+          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataloader/dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
+        <state relative-caret-position="570">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/model.py">
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/55/0_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/55/250_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/55/200_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/55/50_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/55/100_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/55/150_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/samples/photo2monet/56/0_photo2monet.png" />
+    <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2071">
-          <caret line="109" column="33" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
+        <state relative-caret-position="437">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataloader/dataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="9" column="68" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        <state relative-caret-position="247">
+          <caret line="16" column="128" selection-start-line="16" selection-start-column="128" selection-end-line="16" selection-end-column="128" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.py">
+    <entry file="file://$PROJECT_DIR$/model/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="92" lean-forward="true" selection-start-line="15" selection-start-column="92" selection-end-line="15" selection-end-column="92" />
+        <state relative-caret-position="133">
+          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
         </state>
       </provider>
     </entry>
