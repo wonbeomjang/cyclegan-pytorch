@@ -3,6 +3,8 @@ from src.test import Tester
 from dataloader.dataloader import get_loader
 import os
 from config.config import get_config
+from utils.download_datset import download_dataset
+from utils.organize_dataset import organize_dataset
 
 
 def main(config):
@@ -14,6 +16,10 @@ def main(config):
 
     if not os.path.exists(config.sample_dir):
         os.makedirs(config.sample_dir)
+
+    if not os.path.exists(config.dataset):
+        download_dataset(config.from_style, config.to_style)
+        organize_dataset()
 
     print(f"{config.from_style} to {config.to_style} CycleGAN")
 

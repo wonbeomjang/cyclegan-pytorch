@@ -2,7 +2,7 @@ import os
 from config.config import get_config
 import shutil
 
-def main():
+def organize_dataset():
     config = get_config()
 
 
@@ -59,4 +59,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    organize_dataset()

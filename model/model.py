@@ -16,11 +16,9 @@ class ResidualBlock(nn.Module):
         self.block = nn.Sequential(
             nn.ReflectionPad2d(1),
             nn.Conv2d(in_features, in_features, 3),
-            nn.InstanceNorm2d(in_features),
             nn.ReLU(inplace=True),
             nn.ReflectionPad2d(1),
             nn.Conv2d(in_features, in_features, 3),
-            nn.InstanceNorm2d(in_features),
         )
 
     def forward(self, x):
@@ -36,7 +34,6 @@ class ResidualGenerator(nn.Module):
         model = [
             nn.ReflectionPad2d(channels),
             nn.Conv2d(channels, out_features, 7),
-            nn.InstanceNorm2d(out_features),
             nn.ReLU(inplace=True),
         ]
         in_features = out_features
@@ -46,7 +43,6 @@ class ResidualGenerator(nn.Module):
             out_features *= 2
             model += [
                 nn.Conv2d(in_features, out_features, 3, stride=2, padding=1),
-                nn.InstanceNorm2d(out_features),
                 nn.ReLU(inplace=True),
             ]
             in_features = out_features
@@ -61,7 +57,6 @@ class ResidualGenerator(nn.Module):
             model += [
                 nn.Upsample(scale_factor=2),
                 nn.Conv2d(in_features, out_features, 3, stride=1, padding=1),
-                nn.InstanceNorm2d(out_features),
                 nn.ReLU(inplace=True),
             ]
             in_features = out_features
