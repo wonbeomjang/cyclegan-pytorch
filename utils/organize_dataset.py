@@ -11,21 +11,23 @@ def organize_dataset():
         return
 
     for image_transfer in os.listdir(config.dataset):
-        print(image_transfer)
         if not '2' in image_transfer:
             continue
         from_style, to_style = image_transfer.split('2')
         if not os.path.exists(os.path.join(config.dataset, from_style)):
-            a_num = 1000000
             os.makedirs(os.path.join(config.dataset, from_style))
+        if not os.path.exists((os.path.join(config.dataset, to_style))):
+            os.makedirs(os.path.join(config.dataset, to_style))
+
+        if not os.listdir(os.path.join(config.dataset, from_style)):
+            a_num = 1000000
         else:
             a_num = int('1' + str(os.listdir(os.path.join(config.dataset, from_style))[-1].split('.')[0]))
 
-        if not os.path.exists((os.path.join(config.dataset, to_style))):
+        if not os.listdir(os.path.join(config.dataset, to_style)):
             b_num = 1000000
-            os.makedirs(os.path.join(config.dataset, to_style))
         else:
-            b_num = int('1' + str(os.listdir(os.path.join(config.dataset, from_style))[-1].split('.')[0]))
+            b_num = int('1' + str(os.listdir(os.path.join(config.dataset, to_style))[-1].split('.')[0]))
         num = 0
 
         for image_dir in os.listdir(os.path.join(config.dataset, image_transfer)):

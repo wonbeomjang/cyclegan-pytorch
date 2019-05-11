@@ -17,7 +17,8 @@ def main(config):
     if not os.path.exists(config.sample_dir):
         os.makedirs(config.sample_dir)
 
-    if not os.path.exists(config.dataset):
+    if not os.path.exists(os.path.join(config.dataset, config.from_style))\
+            or not os.path.exists(os.path.join(config.dataset, config.to_style)):
         download_dataset(config.from_style, config.to_style)
         organize_dataset()
 

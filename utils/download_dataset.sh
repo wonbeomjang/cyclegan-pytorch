@@ -1,4 +1,4 @@
-mkdir ../datasets
+mkdir ../dataset
 FILE=$1
 
 if [[ $FILE != "ae_photos" && $FILE != "apple2orange" && $FILE != "summer2winter_yosemite" &&  $FILE != "horse2zebra" && $FILE != "monet2photo" && $FILE != "cezanne2photo" && $FILE != "ukiyoe2photo" && $FILE != "vangogh2photo" && $FILE != "maps" && $FILE != "cityscapes" && $FILE != "facades" && $FILE != "iphone2dslr_flower" && $FILE != "ae_photos" ]]; then
@@ -6,10 +6,10 @@ if [[ $FILE != "ae_photos" && $FILE != "apple2orange" && $FILE != "summer2winter
     exit 1
 fi
 
-URL=https://people.eecs.berkeley.edu/~taesung_park/CycleGAN/datasets/$FILE.zip
-ZIP_FILE=../datasets/$FILE.zip
-TARGET_DIR=../datasets/$FILE/
+URL=https://people.eecs.berkeley.edu/~taesung_park/CycleGAN/dataset/$FILE.zip
+ZIP_FILE=../dataset/$FILE.zip
+TARGET_DIR=../dataset/$FILE/
 wget -N $URL -O $ZIP_FILE
 mkdir $TARGET_DIR
-unzip $ZIP_FILE -d ../datasets/
+unzip $ZIP_FILE -d ../dataset/
 rm $ZIP_FILE

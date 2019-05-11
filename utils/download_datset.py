@@ -4,4 +4,4 @@ import os
 
 def download_dataset(from_style, to_style):
     print(f"[!] download {to_style}2{from_style}")
-    os.system(os.path.join('utils', f'download_dataset.sh {to_style}2{from_style}'))
+    os.system(os.path.join(f'download_dataset.sh {to_style}2{from_style}'))
