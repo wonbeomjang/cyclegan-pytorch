@@ -9,6 +9,7 @@ def weights_init(m):
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
 
+
 class ResidualBlock(nn.Module):
     def __init__(self, in_features):
         super(ResidualBlock, self).__init__()
@@ -16,15 +17,13 @@ class ResidualBlock(nn.Module):
         self.block = nn.Sequential(
             nn.ReflectionPad2d(1),
             nn.Conv2d(in_features, in_features, 3),
-            nn.BatchNorm2d(in_features),
             nn.ReLU(inplace=True),
             nn.ReflectionPad2d(1),
             nn.Conv2d(in_features, in_features, 3),
-            nn.BatchNorm2d(in_features),
         )
 
     def forward(self, x):
-        return x + self.block(x)
+        return x + self.block(x).mul(0.2)
 
 
 class ResidualGenerator(nn.Module):
@@ -46,7 +45,6 @@ class ResidualGenerator(nn.Module):
             out_features *= 2
             model += [
                 nn.Conv2d(in_features, out_features, 3, stride=2, padding=1),
-                nn.BatchNorm2d(out_features),
                 nn.ReLU(inplace=True),
             ]
             in_features = out_features
@@ -61,7 +59,6 @@ class ResidualGenerator(nn.Module):
             model += [
                 nn.Upsample(scale_factor=2),
                 nn.Conv2d(in_features, out_features, 3, stride=1, padding=1),
-                nn.BatchNorm2d(out_features),
                 nn.ReLU(inplace=True),
             ]
             in_features = out_features
