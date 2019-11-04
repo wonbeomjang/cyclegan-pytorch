@@ -50,6 +50,9 @@ class Trainer:
         if not os.path.exists(style_dir):
             os.makedirs(style_dir)
 
+        self.generator_ab.train()
+        self.generator_ba.train()
+
         for epoch in range(self.epoch, self.num_epoch):
             if not os.path.exists(os.path.join(style_dir, str(epoch))):
                 os.makedirs(os.path.join(style_dir, str(epoch)))
@@ -65,19 +68,14 @@ class Trainer:
                 # ---------------
                 # train generator
                 # ---------------
-                self.generator_ab.train()
-                self.generator_ba.train()
 
                 # make image
                 fake_image_b = self.generator_ab(real_image_a)
                 fake_image_a = self.generator_ba(real_image_b)
 
-                out_a = self.discriminator_a(fake_image_a)
-                out_b = self.discriminator_b(fake_image_b)
-
                 # gan loss
-                gan_ab_loss = self.criterion_gan(out_a, real_labels)
-                gan_ba_loss = self.criterion_gan(out_b, real_labels)
+                gan_ab_loss = self.criterion_gan(self.discriminator_a(fake_image_a), real_labels)
+                gan_ba_loss = self.criterion_gan(self.discriminator_b(fake_image_b), real_labels)
                 gan_loss = (gan_ab_loss + gan_ba_loss) / 2
 
                 # cycle loss
@@ -113,14 +111,14 @@ class Trainer:
                 # ---------------------
                 fake_image_b = self.generator_ab(real_image_a)
                 real_loss_b = self.criterion_gan(self.discriminator_b(real_image_b), real_labels)
-                fake_loss_b = self.criterion_gan(self.discriminator_a(fake_image_b), fake_labels)
+                fake_loss_b = self.criterion_gan(self.discriminator_b(fake_image_b), fake_labels)
                 discriminator_b_loss = (real_loss_b + fake_loss_b) / 2
-
-                discriminator_loss = (discriminator_a_loss + discriminator_b_loss) / 2
 
                 self.optimizer_D_B.zero_grad()
                 discriminator_b_loss.backward()
                 self.optimizer_D_B.step()
+
+                discriminator_loss = (discriminator_a_loss + discriminator_b_loss) / 2
 
                 if step % 10 == 0:
                     print(f"[Epoch {epoch}/{self.num_epoch}] [Batch {step}/{total_step}] "
@@ -149,15 +147,3 @@ class Trainer:
             torch.save(self.discriminator_b.state_dict(), os.path.join(self.checkpoint_dir,
                                                                        f"{self.from_style}2{self.to_style}",
                                                                        f"discriminator_b_{epoch}.pth"))
-"""
-            fig = plt.figure()
-            subplot = fig.add_subplot(epoch + 1, 3, epoch + 1)
-            fake_image_b = self.generator_ab(real_image_a)
-            fake_image_a = self.generator_ba(real_image_b)
-            subplot.imshow([fake_image_b[0].cpu().numpy(), fake_image_a[0].cpu().numpy()])
-            subplot.set_xticks([])
-            subplot.set_yticks([])
-            print('[*] Saved sample images')
-            dir_name = os.path.join(self.sample_dir, "test.png")
-            plt.savefig(dir_name)
-"""
