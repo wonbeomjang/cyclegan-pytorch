@@ -25,13 +25,13 @@ dataset/
 
 or run python file
 ```bash
-python main.py --style monet2photo
+python download_dataset.py --style monet2photo
 ```
 ## how to train
 run main file
 example) monet2photo
 ```bash
-python main.py --real_image_b photo --to_style monet
+python main.py --style monet2photo
 ```
 
 ## how to get sample
