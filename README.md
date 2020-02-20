@@ -5,10 +5,37 @@ This repository is a deep-running part of a program that changes the style of a 
 ## preparing dataset
 We used the supplied cycleGAN dataset.You can download datasets from this link.(https://people.eecs.berkeley.edu/~taesung_park/CycleGAN/datasets/)  
 
-Run organize_sample_data.py to sort the downloaded files so they can be learned. As an example, the directory for the monet2photo dataset is changed to dataset \ monet, dataset \ photo.
+organize image following structure
+example) monet2photo
+```
+dataset/
+    photo/
+        0001.jpg
+        0002.jpg
+        0003.jpg
+        0004.jpg
+        ...
+    monet/
+        0001.jpg
+        0002.jpg
+        0003.jpg
+        0004.jpg
+        ...
+```
 
+or run python file
+```bash
+python main.py --style monet2photo
+```
 ## how to train
-Once you have structured the dataset, you can train it by running the train in the Trainer class.
+run main file
+example) monet2photo
+```bash
+python main.py --real_image_b photo --to_style monet
+```
 
 ## how to get sample
 Once you have structured the dataset, you can train it by running the test in the Tester class. then sample image will be stored in samples
+
+## Sample
+![](images/sample.png)

@@ -20,7 +20,7 @@ def build_model(config, from_style, to_style):
     if not os.path.exists(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}")):
         os.makedirs(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}"))
 
-    if len(os.listdir(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}"))) == 0:
+    if not generator_ab_param:
         print(f"[!] No checkpoint in {config.checkpoint_dir}")
         generator_ab.apply(weights_init)
         generator_ba.apply(weights_init)

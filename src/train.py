@@ -18,28 +18,21 @@ class Trainer:
         self.lambda_cycle = config.lambda_cycle
         self.lambda_identity = config.lambda_identity
         self.checkpoint_dir = config.checkpoint_dir
-        self.from_style = config.from_style
-        self.to_style = config.to_style
+        self.from_style = config.style.split('2')[0]
+        self.to_style = config.style.split('2')[1]
         self.sample_dir = config.sample_dir
         self.epoch = config.epoch
         self.generator_ab, self.generator_ba, self.discriminator_a, self.discriminator_b = build_model(config, self.from_style, self.to_style)
-        self.optimizer_G = torch.optim.Adam(
-            itertools.chain(self.generator_ab.parameters(), self.generator_ba.parameters()),
-            lr=config.lr, betas=(config.decay_epoch_1, config.decay_epoch_2))
-        self.optimizer_D_A = torch.optim.Adam(self.discriminator_a.parameters(), lr=config.lr,
-                                              betas=(config.decay_epoch_1, config.decay_epoch_2))
-        self.optimizer_D_B = torch.optim.Adam(self.discriminator_b.parameters(), lr=config.lr,
-                                              betas=(config.decay_epoch_1, config.decay_epoch_2))
+        self.optimizer_G = torch.optim.Adam(itertools.chain(self.generator_ab.parameters(), self.generator_ba.parameters()), lr=config.lr, betas=(config.b1, config.b2))
+        self.optimizer_D_A = torch.optim.Adam(self.discriminator_a.parameters(), lr=config.lr, betas=(config.b1, config.b2))
+        self.optimizer_D_B = torch.optim.Adam(self.discriminator_b.parameters(), lr=config.lr, betas=(config.b1, config.b2))
 
-        self.lr_scheduler_G = torch.optim.lr_scheduler.LambdaLR(self.optimizer_G,
-                                                                lr_lambda=LambdaLR(self.num_epoch, config.epoch, config.decay_epoch).step)
-        self.lr_scheduler_D_A = torch.optim.lr_scheduler.LambdaLR(self.optimizer_G,
-                                                                  lr_lambda=LambdaLR(self.num_epoch, config.epoch, config.decay_epoch).step)
-        self.lr_scheduler_D_B = torch.optim.lr_scheduler.LambdaLR(self.optimizer_G,
-                                                                  lr_lambda=LambdaLR(self.num_epoch, config.epoch, config.decay_epoch).step)
+        self.lr_scheduler_G = torch.optim.lr_scheduler.StepLR(self.optimizer_G, config.decay_epoch, 0.5)
+        self.lr_scheduler_D_A = torch.optim.lr_scheduler.StepLR(self.optimizer_D_A, config.decay_epoch, 0.5)
+        self.lr_scheduler_D_B = torch.optim.lr_scheduler.StepLR(self.optimizer_D_B, config.decay_epoch, 0.5)
 
-        # self.criterion_gan = nn.BCELoss().to(self.device)
-        self.criterion_gan = nn.MSELoss().to(self.device)
+        self.criterion_gan = nn.BCELoss().to(self.device)
+        # self.criterion_gan = nn.MSELoss().to(self.device)
         self.criterion_cycle = nn.L1Loss().to(self.device)
         self.criterion_identity = nn.L1Loss().to(self.device)
 
@@ -122,8 +115,8 @@ class Trainer:
 
                 if step % 10 == 0:
                     print(f"[Epoch {epoch}/{self.num_epoch}] [Batch {step}/{total_step}] "
-                          f"[D loss: {discriminator_loss.item()}] [G loss: {generator_loss.item()}, "
-                          f"adv: {gan_loss.item()}, cycle: {cycle_loss.item()}, identity: {identity_loss.item()}]")
+                          f"[D loss: {discriminator_loss.item():.4f}] [G loss: {generator_loss.item():.4f}, "
+                          f"adv: {gan_loss.item():.4f}, cycle: {cycle_loss.item():.4f}, identity: {identity_loss.item():.4f}]")
                     if step % 50 == 0:
                         to_style_image = torch.cat([real_image_a, fake_image_b], 2)
                         save_image(to_style_image,
@@ -134,16 +127,7 @@ class Trainer:
             self.lr_scheduler_D_B.step()
             self.lr_scheduler_G.step()
 
-            torch.save(self.generator_ab.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                    f"{self.from_style}2{self.to_style}",
-                                                                    f"generator_ab_{epoch}.pth"))
-            torch.save(self.generator_ba.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                    f"{self.from_style}2{self.to_style}",
-                                                                    f"generator_ba_{epoch}.pth"))
-
-            torch.save(self.discriminator_a.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                       f"{self.from_style}2{self.to_style}",
-                                                                       f"discriminator_a_{epoch}.pth"))
-            torch.save(self.discriminator_b.state_dict(), os.path.join(self.checkpoint_dir,
-                                                                       f"{self.from_style}2{self.to_style}",
-                                                                       f"discriminator_b_{epoch}.pth"))
+            torch.save(self.generator_ab.state_dict(), os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}", f"generator_ab_{epoch}.pth"))
+            torch.save(self.generator_ba.state_dict(), os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}", f"generator_ba_{epoch}.pth"))
+            torch.save(self.discriminator_a.state_dict(), os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}", f"discriminator_a_{epoch}.pth"))
+            torch.save(self.discriminator_b.state_dict(), os.path.join(self.checkpoint_dir, f"{self.from_style}2{self.to_style}", f"discriminator_b_{epoch}.pth"))

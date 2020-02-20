@@ -9,8 +9,8 @@ class Tester:
         self.data_loader = data_loader
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.num_epoch = config.num_epoch
-        self.from_style = config.from_style
-        self.to_style = config.to_style
+        self.from_style = config.style.split('2')[0]
+        self.to_style = config.style.split('2')[1]
         self.config = config
         self.sample_dir = config.sample_dir
         self.sample_epoch = config.sample_epoch
