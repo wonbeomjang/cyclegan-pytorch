@@ -1,5 +1,4 @@
 from src.train import Trainer
-from src.test import Tester
 from dataloader.dataloader import get_loader
 import os
 from config.config import get_config
@@ -20,12 +19,9 @@ def main(config):
     from_style = config.style.split('2')[0]
     to_style = config.style.split('2')[1]
 
-    data_loader, val_data_loader = get_loader(from_style, to_style, config)
+    data_loader = get_loader(from_style, to_style, config)
     trainer = Trainer(config, data_loader)
     trainer.train()
-
-    tester = Tester(config, val_data_loader)
-    tester.test()
 
 
 if __name__ == "__main__":

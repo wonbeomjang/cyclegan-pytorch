@@ -33,8 +33,7 @@ images_B = os.listdir(os.path.join('temp', args.style, 'trainB'))
 print('[*] Move image')
 for image_name in images_A:
     shutil.move(os.path.join('temp', args.style, 'trainA', image_name), os.path.join('dataset', from_style, image_name))
-for image_name in images_A:
+for image_name in images_B:
     shutil.move(os.path.join('temp', args.style, 'trainB', image_name), os.path.join('dataset', to_style, image_name))
 
-
-
+shutil.rmtree('temp')

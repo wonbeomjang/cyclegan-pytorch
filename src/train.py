@@ -118,10 +118,10 @@ class Trainer:
                           f"[D loss: {discriminator_loss.item():.4f}] [G loss: {generator_loss.item():.4f}, "
                           f"adv: {gan_loss.item():.4f}, cycle: {cycle_loss.item():.4f}, identity: {identity_loss.item():.4f}]")
                     if step % 50 == 0:
-                        to_style_image = torch.cat([real_image_a, fake_image_b], 2)
-                        save_image(to_style_image,
-                                   f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/"
-                                   f"{step}_{self.from_style}2{self.to_style}.png", normalize=False)
+                        style_image_a = torch.cat([real_image_a, fake_image_b], 2)
+                        style_image_b = torch.cat([real_image_b, fake_image_a], 2)
+                        save_image(style_image_a, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.from_style}2{self.to_style}.png", normalize=False)
+                        save_image(style_image_b, f"{self.sample_dir}/{self.from_style}2{self.to_style}/{epoch}/{step}_{self.to_style}2{self.from_style}.png", normalize=False)
 
             self.lr_scheduler_D_A.step()
             self.lr_scheduler_D_B.step()

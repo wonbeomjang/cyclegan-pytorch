@@ -1,4 +1,4 @@
-from model.model import ResidualGenerator, Discriminator
+from model.model import Generator, Discriminator
 import os
 from glob import glob
 import torch
@@ -6,8 +6,8 @@ import torch
 
 def build_model(config, from_style, to_style):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    generator_ab = ResidualGenerator(config.image_size, config.num_residual_blocks).to(device)
-    generator_ba = ResidualGenerator(config.image_size, config.num_residual_blocks).to(device)
+    generator_ab = Generator(config.num_residual_blocks).to(device)
+    generator_ba = Generator( config.num_residual_blocks).to(device)
     discriminator_a = Discriminator(config.image_size).to(device)
     discriminator_b = Discriminator(config.image_size).to(device)
 
@@ -37,8 +37,8 @@ def build_model(config, from_style, to_style):
 
 def get_sample_model(config, from_style, to_style, epoch):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    generator_ab = ResidualGenerator(config.image_size, config.num_residual_blocks).to(device)
-    generator_ba = ResidualGenerator(config.image_size, config.num_residual_blocks).to(device)
+    generator_ab = Generator(config.image_size, config.num_residual_blocks).to(device)
+    generator_ba = Generator(config.image_size, config.num_residual_blocks).to(device)
     generator_ab_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", f"generator_ab_{epoch}.pth"))
     generator_ba_param = glob(os.path.join(config.checkpoint_dir, f"{from_style}2{to_style}", f"generator_ab_{epoch}.pth"))
     print(f"[*] Load checkpoint in {epoch}")

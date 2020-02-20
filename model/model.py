@@ -26,9 +26,9 @@ class ResidualBlock(nn.Module):
         return x + self.block(x).mul(0.2)
 
 
-class ResidualGenerator(nn.Module):
-    def __init__(self, in_shape, num_residual_blocks):
-        super(ResidualGenerator, self).__init__()
+class Generator(nn.Module):
+    def __init__(self, num_residual_blocks=4):
+        super(Generator, self).__init__()
         channels = 3
         # Initial convolution block
         out_features = 64
