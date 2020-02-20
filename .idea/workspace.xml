@@ -43,15 +43,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\images" />
-      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset\photo" />
       <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset\monet" />
       <recent name="C:\Users\user\Desktop\cyclegan-pytorch\utils" />
       <recent name="C:\Users\aiel\Desktop\cyclegan-pytorch\dataset" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\parameters" />
+      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\images" />
+      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
@@ -280,10 +281,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582207680823" />
-    <state x="609" y="114" key="CommitChangelistDialog2" timestamp="1582207260534">
+    <state x="609" y="114" key="CommitChangelistDialog2" timestamp="1582208419196">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="609" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582207260534" />
+    <state x="609" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582208419196" />
     <state width="1899" height="249" key="GridCell.Tab.0.bottom" timestamp="1582208339837">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -300,10 +301,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="249" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582208339837" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1582199046705">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1582208422879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582199046705" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582208422879" />
     <state x="587" y="216" width="745" height="608" key="find.popup" timestamp="1582138798287">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

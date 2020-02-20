@@ -34,8 +34,10 @@ example) monet2photo
 python main.py --style monet2photo
 ```
 
-## how to get sample
-Once you have structured the dataset, you can train it by running the test in the Tester class. then sample image will be stored in samples
+## how to test
+```bash
+python test.py --param_path PATH/TO/THE/PARAMETER --input_dir PAHT/TO/THE/INPUT/DIRECTORY --output_dir PATH/TO/THE/OUTPUT/DIRECTORY
+```
 
 ## Sample
 ![](images/sample.png)
