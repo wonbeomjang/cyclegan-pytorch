@@ -52,6 +52,7 @@ class Trainer:
             for step, image in enumerate(self.data_loader):
                 total_step = len(self.data_loader)
 
+
                 real_image_a = image["A"].to(self.device)
                 real_image_b = image["B"].to(self.device)
 

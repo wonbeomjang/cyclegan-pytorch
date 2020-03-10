@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02066752-5668-4386-b789-a2268bfec8be" name="Default Changelist" comment="add batch normalization">
-      <change afterPath="$PROJECT_DIR$/parameters/monet.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/cyclegan-pytorch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cyclegan-pytorch.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataloader/dataloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader/dataloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/download_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/download_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/sample.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/sample.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloader/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader/dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,16 +34,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset\photo" />
-      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset\monet" />
-      <recent name="C:\Users\user\Desktop\cyclegan-pytorch\utils" />
-      <recent name="C:\Users\aiel\Desktop\cyclegan-pytorch\dataset" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\parameters" />
       <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\images" />
       <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jtige\OneDrive\바탕 화면\cyclegan-pytorch" />
+      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset\photo" />
+      <recent name="C:\Users\jtige\PycharmProjects\cyclegan-pytorch\dataset\monet" />
+      <recent name="C:\Users\user\Desktop\cyclegan-pytorch\utils" />
+      <recent name="C:\Users\aiel\Desktop\cyclegan-pytorch\dataset" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
@@ -281,26 +273,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582207680823" />
-    <state x="609" y="114" key="CommitChangelistDialog2" timestamp="1582208419196">
+    <state x="609" y="114" key="CommitChangelistDialog2" timestamp="1583816072087">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="609" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582208419196" />
-    <state width="1899" height="249" key="GridCell.Tab.0.bottom" timestamp="1582208339837">
+    <state x="609" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1583816072087" />
+    <state width="1899" height="249" key="GridCell.Tab.0.bottom" timestamp="1583816052876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="249" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582208339837" />
-    <state width="1899" height="249" key="GridCell.Tab.0.center" timestamp="1582208339837">
+    <state width="1899" height="249" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583816052876" />
+    <state width="1899" height="249" key="GridCell.Tab.0.center" timestamp="1583816052875">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="249" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582208339837" />
-    <state width="1899" height="249" key="GridCell.Tab.0.left" timestamp="1582208339837">
+    <state width="1899" height="249" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583816052875" />
+    <state width="1899" height="249" key="GridCell.Tab.0.left" timestamp="1583816052875">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="249" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582208339837" />
-    <state width="1899" height="249" key="GridCell.Tab.0.right" timestamp="1582208339837">
+    <state width="1899" height="249" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583816052875" />
+    <state width="1899" height="249" key="GridCell.Tab.0.right" timestamp="1583816052875">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="249" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582208339837" />
+    <state width="1899" height="249" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583816052875" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1582208422879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

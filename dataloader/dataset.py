@@ -38,7 +38,6 @@ class GanDataset(Dataset):
             image_a = transform_a(image_a)
             image_b = transform_b(image_b)
 
-
         return {'A': image_a, 'B': image_b}
 
     def __len__(self):
